@@ -202,8 +202,15 @@ def build_cplan_pace_figure(cplan_full: pd.DataFrame) -> go.Figure:
         line_width=2,
         line_dash="dot",
         line_color=KT_RED,
-        annotation_text="현재(2026.05)",
-        annotation_position="top",
+    )
+    y_top = float(cplan_full["누적페이스"].max())
+    fig.add_annotation(
+        x=current_label,
+        y=y_top,
+        text="현재(2026.05)",
+        showarrow=False,
+        yanchor="bottom",
+        font=dict(color=KT_RED, size=11),
     )
     fig.update_layout(
         height=380,
